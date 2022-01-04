@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 namespace Curso.Entities
 {
-    internal class Banking
+      class Banking
     {
 
         UserPhysical user = new UserPhysical(); // todo cadastro 
@@ -47,14 +47,14 @@ namespace Curso.Entities
         }
 
 
-        /* public override void loan(double LoanCredity, Banking loan_Banking) //emprestimo
+         public virtual void loan (double LoanCredity, Banking loan_Banking) //emprestimo
          {
                    loandepost(LoanCredity * 0.3);
 
              Console.WriteLine($"Credito: {Credity}");
 
 
-         }*/
+         }
 
 
         public void loanSaq(double Loandebtor) //pagamento do emprestimo Saldo Devedor
@@ -78,6 +78,8 @@ namespace Curso.Entities
 
         }
 
+
+       
 
 
         public void loanpay(double LoanCredity) //pagamento do emprestimo
@@ -104,18 +106,18 @@ namespace Curso.Entities
         }
 
 
+        
 
-
-        public bool saq(double Saq) //sacar dinheiro
+        public  virtual bool saq(double Saq) //sacar dinheiro
         {
-
+            
             if (Balance - Saq < (Credity * -1))
             {
                 Console.WriteLine("Saldo Insuficiente: ");
                 return false;
 
             }
-            Balance -= Saq;
+            Balance -= Saq+1.50;  // a cada saque cobrar R$ 1.50
             return true;
 
         }
@@ -133,7 +135,7 @@ namespace Curso.Entities
         }
 
 
-
+        
 
 
 

@@ -20,7 +20,6 @@ List<Banking> ListBanking = new List<Banking>(); //lista banco exemplo historico
 
 
 
-
 Cliente();
 
 void Cliente()
@@ -225,7 +224,7 @@ void cadastro()
 
     }
 
-    Console.WriteLine(physical);
+   
 
 }
 
@@ -297,7 +296,7 @@ void SaqCredito()
 
     var target = ListClient.First(x => x.Cpf == Consult);
 
-    target.loan(debtor, target.Banking);
+    target.Banking.loan(debtor, target.Banking);
 
 }
 

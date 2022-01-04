@@ -52,16 +52,7 @@ namespace Curso.Entities
 
 
 
-        public virtual void loan(double LoanCredity, Banking loan_Banking) //emprestimo
-        {
-
-            Banking.loandepost(LoanCredity * 0.3);
-
-            Console.WriteLine($"Credito: {Banking.Credity}");
-
-
-        }
-
+      
 
 
         public override string ToString()

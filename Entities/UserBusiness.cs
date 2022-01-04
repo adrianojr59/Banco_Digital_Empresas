@@ -21,15 +21,7 @@ namespace Curso.Entities
 
 
 
-        public override void loan(double LoanCredity, Banking loan_Banking) //emprestimo
-        {
-
-            Banking.loandepost(LoanCredity * 2);
-
-            Console.WriteLine($"Credito: {Banking.Credity}");
-
-
-        }
+     
 
 
 
