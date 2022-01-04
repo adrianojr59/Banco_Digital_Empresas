@@ -47,9 +47,9 @@ namespace Curso.Entities
         }
 
 
-         public virtual void loan (double LoanCredity, Banking loan_Banking) //emprestimo
+         public  void loan (double LoanCredity, Banking loan_Banking) //emprestimo
          {
-                   loandepost(LoanCredity * 0.3);
+                   loandepost(LoanCredity );
 
              Console.WriteLine($"Credito: {Credity}");
 
