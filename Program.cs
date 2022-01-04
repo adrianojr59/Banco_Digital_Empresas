@@ -35,8 +35,9 @@ void Cliente()
         Console.WriteLine("2- Inserir nova conta");
         Console.WriteLine("3- Transferir");
         Console.WriteLine("4- Emprestimo Credito: ");
-        Console.WriteLine("6- Pagar Emprestimo");
-        Console.WriteLine("5- Depositar");
+        Console.WriteLine("5- Pagar Emprestimo");
+        Console.WriteLine("6- Depositar");
+        Console.WriteLine("7- Sacar");
 
         Console.WriteLine("X- Sair");
         option = Console.ReadLine();
@@ -50,7 +51,6 @@ void Cliente()
 
             case "2":
                 cadastro();
-
 
                 break;
 
@@ -69,6 +69,9 @@ void Cliente()
 
             case "6":
                 DepositCredito();
+                break;
+            case "7":
+                sacar();
 
                 break;
             default:
@@ -224,7 +227,7 @@ void cadastro()
 
     }
 
-   
+
 
 }
 
@@ -335,5 +338,22 @@ void DepositCredito()
 
     DepositCredit.Banking.loanpay(Value);
 
+
+}
+
+
+
+void sacar()
+{
+
+    Console.WriteLine("Digite Seu Cpf");
+    string cpf = Console.ReadLine();
+
+    Console.WriteLine("Valor do saque ");
+    double Valor = double.Parse(Console.ReadLine());
+
+    var Cpf = ListClient.First(x => x.Cpf == cpf);
+
+    Cpf.Banking.saq(Valor);
 
 }

@@ -52,7 +52,7 @@ namespace Curso.Entities
 
 
 
-      
+       
 
 
         public override string ToString()

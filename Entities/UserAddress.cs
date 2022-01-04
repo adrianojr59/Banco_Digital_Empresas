@@ -13,7 +13,7 @@ namespace Curso.Entities
         public string Street { get; set; }
 
 
-        public UserAddress() { }
+       
 
         public UserAddress(string city, string estate, string street)
         {
