@@ -2,19 +2,23 @@
 using System.Linq;
 
 UserPhysical physical = new UserPhysical(); // todos cadastro  CPF
-UserBusiness business = new UserBusiness(); // todos cadastro CNPJ
+UserPhysical business = new UserBusiness(); // todos cadastro CNPJ
+//aplicado polimorfismo  o comportamento diferente  e que chama polimorfismo  tambem temos override em bussiness usando UPCAST  
+// objetos diferentes variaveis do mesmo tipo    o compilador nao sabe  qual tipo de metodo esta sendo ultilizado nas clases  mas
+// ele sabe que são 2 variaveis do tipo UserPhysical
+// em tempo de execução e que e caracterizado polimorfismo (upcasting)
 
 Banking banking = new Banking(); // criando um novo objeto tipo banking
 
-List<UserPhysical> ListClient = new List<UserPhysical>(); // lista cliente CPF (obs use para acessar o CNPJ boas praticas )
+List<UserPhysical> ListClient = new List<UserPhysical>(); // lista cliente CPF (obs lista não generica somente do tipo CPF )
 
-List<UserBusiness> ListUserBusiness = new List<UserBusiness>(); // lista cliente CNPJ  (obs: foram feito herança  não a necessidade de acessar  por aqui)
+List<UserBusiness> ListUserBusiness = new List<UserBusiness>(); // lista cliente CNPJ  (obs: lista não generica somente do tipo CPNJ)
 
-List<UserAddress> ListUserAddress2 = new List<UserAddress>(); // lista endereço exemplo adicionar mais endereços
+List<UserAddress> ListUserAddress2 = new List<UserAddress>(); // lista endereço exemplo adicionar mais endereços  lista generica 
 
-List<Tel> TelList = new List<Tel>(); //lista telefone exemplo adicionar mais telefones
+List<Tel> TelList = new List<Tel>(); //lista telefone exemplo adicionar mais telefones lista generica 
 
-List<Banking> ListBanking = new List<Banking>(); //lista banco exemplo historico de transferencia
+List<Banking> ListBanking = new List<Banking>(); //lista banco  onde e feito as transferencia lista generica 
 
 
 
@@ -91,13 +95,13 @@ void cadastro()
 {
 
 
-
+    try {
 
     Console.WriteLine("Nome: ");
     string Name = Console.ReadLine();
 
-    Console.WriteLine("Cpf: ");
-    string Cpf = Console.ReadLine();
+    Console.WriteLine("Cpf: ou CPNJ ");
+    string CpfeCnPJ = Console.ReadLine();
 
     Console.WriteLine("Cidade: ");
     string city = Console.ReadLine();
@@ -209,26 +213,32 @@ void cadastro()
     AccountBusiness accountBusiness = Enum.Parse<AccountBusiness>(selectbusiness); // Conta Juridica
 
 
-    if (config == "Pessoa_Fisica")
+    if (config == "Pessoa_Fisica" && CpfeCnPJ.Length<=11) // verificação dupla enum+caracteres
     {
 
 
-        UserPhysical physical = new UserPhysical(Name, Cpf, Address, document, birthdate, age, email, banking, loanCardBanking, DateTime.Now, typeAccount, accountPhysical, typeofAcess, tel); // todos cadastro  CPF
+        UserPhysical physical = new UserPhysical(Name, CpfeCnPJ, Address, document, birthdate, age, email, banking, loanCardBanking, DateTime.Now, typeAccount, accountPhysical, typeofAcess, tel); // todos cadastro  CPF
         ListClient.Add(physical);// adicionando a lista 
 
 
     }
 
-    else
+    else if (config == "Pessoa_Juridica" && CpfeCnPJ.Length >= 14)
     {
 
-        UserBusiness business = new UserBusiness(Name, Cpf, Address, document, birthdate, age, email, banking, loanCardBanking, DateTime.Now, typeAccount, accountPhysical, typeofAcess, tel); // todos cadastro   CNPJ
+        UserBusiness business = new UserBusiness(Name, CpfeCnPJ, Address, document, birthdate, age, email, banking, loanCardBanking, DateTime.Now, typeAccount, accountPhysical, typeofAcess, tel); // todos cadastro   CNPJ
         ListUserBusiness.Add(business); // adicionando a lista 
 
     }
 
+    else  throw new Exception ("CPF ou CNPJ Invalido");
 
+    }
 
+    catch(Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 }
 
 
