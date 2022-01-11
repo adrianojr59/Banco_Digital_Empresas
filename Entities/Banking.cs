@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Globalization;
 namespace Curso.Entities
 {
-      class Banking
+       class Banking
     {
 
-        UserPhysical user = new UserPhysical(); // todo cadastro 
+       // UserPhysical user = new UserPhysical(); // todo cadastro 
 
 
 
